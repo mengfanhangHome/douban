@@ -1,0 +1,12 @@
+{
+  "login": {
+    "user": "username",
+    "pwd": "password",
+    "addTitle": "add new Language",
+    "langType": "lang",
+    "langKeyWord": "keyWord",
+    "drawChineseTitle": "Chinese",
+    "drawEnglishTitle": "English",
+    "loginButton": "login"
+  }
+}

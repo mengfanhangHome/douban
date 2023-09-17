@@ -1,0 +1,12 @@
+{
+  "login": {
+    "user": "用户名",
+    "pwd": "密码",
+    "addTitle": "添加新语种",
+    "langType": "语种",
+    "langKeyWord": "关键词",
+    "drawChineseTitle": "中文",
+    "drawEnglishTitle": "英文",
+    "loginButton": "登录"
+  }
+}

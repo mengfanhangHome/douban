@@ -1,0 +1,22 @@
+.t50-outer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+
+  .col-item {
+    margin-top: 20px;
+    img {
+      height: 300px;
+    }
+    .rate {
+      margin-top: 10px;
+      .ant-card-meta-description {
+        color: #fff;
+      }
+    }
+  }
+}
+.title {
+  color: red;
+}
