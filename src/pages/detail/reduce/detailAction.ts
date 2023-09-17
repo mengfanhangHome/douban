@@ -5,6 +5,7 @@ import { IDetailParams } from "@/pages/detail/interface";
 
 export const GET_DETAIL = "getDetail"; // TOD获取详情
 
+//  请求detail
 export const getDetail =
   <T>(options: T): ThunkAction<void, RooteState, unknown, any> =>
   async (dispatch) => {
