@@ -4,12 +4,9 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "@/redux/hooks";
 import { useDispatch } from "react-redux";
 import { IHotItem } from "../reduce/homeReducer";
-import { updataDetailUrlCreater } from "../reduce/homeAction";
 import "./hot.scss";
 
 export const Hot: FC = () => {
-  const history = useHistory();
-  const dispatch = useDispatch();
   // 获取hotList数据，从redux中
   const { hotList } = useSelector((state) => {
     return {
@@ -24,9 +21,7 @@ export const Hot: FC = () => {
   };
   // TOD：跳转详情页
   const toOtherPage = (record: IHotItem) => {
-    const action = updataDetailUrlCreater(record.url); // TOD将跳转详情页的html爬虫目标地址写入redux
-    dispatch(action);
-    history.push(`/detail`);
+    window.open(record.url, "_blank");
   };
   return (
     <div className="t50-outer">

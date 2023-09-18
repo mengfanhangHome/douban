@@ -12,12 +12,12 @@ export const GET_HOT = "getHost"; //  获取hot列表
 export const UPDATA_HOST_LIST = "upDataHostList"; //  更新hostList
 export const UPDATA_DETAIL_URL = "upDataDetailUrl"; //  更新详情页的http爬虫目标地址
 
-export const updataDetailUrlCreater = (path: string): IUpdataDetailUrl => {
-  return {
-    type: UPDATA_DETAIL_URL,
-    payload: path,
-  };
-};
+// export const updataDetailUrlCreater = (path: string): IUpdataDetailUrl => {
+//   return {
+//     type: UPDATA_DETAIL_URL,
+//     payload: path,
+//   };
+// };
 
 export const getHotCreater =
   (type: movieType): ThunkAction<void, RooteState, unknown, any> =>
