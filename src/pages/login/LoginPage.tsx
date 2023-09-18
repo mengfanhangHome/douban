@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Button, Form, Input } from "antd";
 import { dbPng } from "@/common/url";
 import { useTranslation } from "react-i18next";
+import { Message } from "./component/Message";
 
 const { Item } = Form;
 
@@ -22,6 +23,9 @@ export const LoginPage: FC = () => {
         </Item>
         <Item<FieldType> label={t("login.pwd")} name="password">
           <Input />
+        </Item>
+        <Item<FieldType> label={t("login.phonePwd")} name="password">
+          <Message />
         </Item>
         <Item>
           <Button>{t("login.loginButton")}</Button>

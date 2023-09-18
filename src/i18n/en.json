@@ -7,6 +7,7 @@
     "langKeyWord": "keyWord",
     "drawChineseTitle": "Chinese",
     "drawEnglishTitle": "English",
-    "loginButton": "login"
+    "loginButton": "login",
+    "phonePwd": "phonePwd"
   }
 }

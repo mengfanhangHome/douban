@@ -3,11 +3,6 @@ import { RooteState } from "@/redux/store";
 import { getHttp } from "@/api/http";
 import { movieType } from "@/pages/home/interface";
 
-interface IUpdataDetailUrl {
-  type: string;
-  payload: string;
-}
-
 export const GET_HOT = "getHost"; //  获取hot列表
 export const UPDATA_HOST_LIST = "upDataHostList"; //  更新hostList
 export const UPDATA_DETAIL_URL = "upDataDetailUrl"; //  更新详情页的http爬虫目标地址

@@ -1,0 +1,16 @@
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 100px;
+  .name {
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .checkout {
+    width: 20px;
+    height: 20px;
+  }
+}

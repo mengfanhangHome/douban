@@ -18,7 +18,7 @@ const withFrom = (Com, sunset = 17) => {
         components: {
           Card: {
             headerBg: "#855c5c",
-            actionsBg: ''
+            actionsBg: "",
           },
           Modal: {
             titleColor: useLabelColor(sunset),

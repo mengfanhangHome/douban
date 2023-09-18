@@ -6,10 +6,12 @@ import {
 import thunk from "redux-thunk";
 import langReducer from "./lang/langReducer";
 import homeReducer from "@/pages/home/reduce/homeReducer";
+import shopReducer from "@/pages/shop/reduce/shopReducer";
 
 const rootReducer = combineReducers({
   langReducer,
   homeReducer,
+  shopReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
