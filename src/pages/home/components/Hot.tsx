@@ -1,8 +1,6 @@
 import { FC } from "react";
-import { Card, Col, Image } from "antd";
-import { useHistory } from "react-router-dom";
+import { Card, Col, Image, Empty } from "antd";
 import { useSelector } from "@/redux/hooks";
-import { useDispatch } from "react-redux";
 import { IHotItem } from "../reduce/homeReducer";
 import "./hot.scss";
 
@@ -25,38 +23,39 @@ export const Hot: FC = () => {
   };
   return (
     <div className="t50-outer">
-      {hotList.map((item) => {
-        return (
-          <Col
-            key={item.id}
-            span={5}
-            className="col-item"
-            onClick={() => toOtherPage(item)}
-          >
-            <Card
-              className="card-item"
-              title={item.title}
-              bodyStyle={styleContentPublic}
-              hoverable={true}
+      {(hotList.length &&
+        hotList.map((item) => {
+          return (
+            <Col
               key={item.id}
+              span={5}
+              className="col-item"
+              onClick={() => toOtherPage(item)}
             >
-              <div>
-                <Image
-                  preview={false}
-                  className="pic"
-                  src={item.cover}
-                  alt=""
-                />
-                <Card.Meta
-                  title="Europe Street beat"
-                  description={`评分：${item.rate}`}
-                  className="rate"
-                />
-              </div>
-            </Card>
-          </Col>
-        );
-      })}
+              <Card
+                className="card-item"
+                title={item.title}
+                bodyStyle={styleContentPublic}
+                hoverable={true}
+                key={item.id}
+              >
+                <div>
+                  <Image
+                    preview={false}
+                    className="pic"
+                    src={item.cover}
+                    alt=""
+                  />
+                  <Card.Meta
+                    title="Europe Street beat"
+                    description={`评分：${item.rate}`}
+                    className="rate"
+                  />
+                </div>
+              </Card>
+            </Col>
+          );
+        })) || <Empty />}
     </div>
   );
 };
