@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { Button, Form, Input, InputNumber } from "antd";
 import { getHotCreater } from "../reduce/homeAction";
 import { IMovieType } from "@/pages/home/interface";
+import { HotAdd } from "./HotAdd";
+import "./hotSelect.scss";
 
 interface ISelectForm {
   title: string;
@@ -15,7 +17,12 @@ export const HotSelect: FC = () => {
     title: "",
     rate: 0,
   });
+  const [modalFlag, modalFlagHandler] = useState(false);
 
+  //  开/关弹窗事件
+  const toggleModalFlagHandler = (bool: boolean) => {
+    modalFlagHandler(bool);
+  };
   //  TODO:获取type
   const { type } = useParams<IMovieType>();
   // TODO: dispatch
@@ -23,10 +30,10 @@ export const HotSelect: FC = () => {
 
   const formItemLayout = {
     labelCol: {
-      span: 2,
+      span: 12,
     },
     wrapperCol: {
-      span: 4,
+      span: 12,
     },
   };
   //  初始化list
@@ -36,9 +43,16 @@ export const HotSelect: FC = () => {
 
   //  更新select
   const setFormData = (e, key: string) => {
+    let value = "";
+    if (e?.target?.value !== undefined) {
+      value = e.target.value;
+    } else {
+      value = e || 0;
+    }
     const updataItem = {
-      [key]: e?.target?.value || e || 0,
+      [key]: value,
     };
+    console.log(updataItem);
     selectDatahandler((state) => {
       return {
         ...state,
@@ -51,19 +65,36 @@ export const HotSelect: FC = () => {
     const action = getHotCreater(type, selectDate);
     dispatch(action);
   };
+  //  新增电影列表函数
+  const addHot = async () => {
+    toggleModalFlagHandler(true);
+  };
   return (
     <>
-      <Form>
+      <Form className="form-layout" layout="inline">
         <Form.Item label="电影名称" {...formItemLayout}>
-          <Input onChange={(e) => setFormData(e, "title")} />
+          <Input
+            onChange={(e) => setFormData(e, "title")}
+            onPressEnter={getHot}
+          />
         </Form.Item>
         <Form.Item label="电影评分" {...formItemLayout}>
-          <InputNumber onChange={(e) => setFormData(e, "rate")} />
+          <InputNumber
+            onChange={(e) => setFormData(e, "rate")}
+            onPressEnter={getHot}
+          />
         </Form.Item>
         <Form.Item>
           <Button onClick={getHot}>查找</Button>
         </Form.Item>
+        <Form.Item>
+          <Button onClick={addHot}>新增</Button>
+        </Form.Item>
       </Form>
+      <HotAdd
+        openFlag={modalFlag}
+        toggleModalFlagHandler={toggleModalFlagHandler}
+      />
     </>
   );
 };

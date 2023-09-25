@@ -1,5 +1,7 @@
 # React + TypeScript + Vite
 
+# 运行 npm run dev 就他妈可以启动了，后端数据来自‘db-server’
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

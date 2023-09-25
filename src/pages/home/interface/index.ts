@@ -20,3 +20,10 @@ export interface IMovieList {
 export interface IMoveResult {
   subject: IMovieList[];
 }
+
+//  新增电影值
+export interface IAddMovieItem {
+  title: string;
+  url: string;
+  cover: string;
+}

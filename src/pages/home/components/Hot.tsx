@@ -21,6 +21,10 @@ export const Hot: FC = () => {
   const toOtherPage = (record: IHotItem) => {
     window.open(record.url, "_blank");
   };
+  // TOD： 删除操作
+  const delMovieHandler = (item: IHotItem) => {
+    
+  };
   return (
     <div className="t50-outer">
       {(hotList.length &&
@@ -30,7 +34,7 @@ export const Hot: FC = () => {
               key={item.id}
               span={5}
               className="col-item"
-              onClick={() => toOtherPage(item)}
+              onClick={() => delMovieHandler(item)}
             >
               <Card
                 className="card-item"
@@ -45,10 +49,11 @@ export const Hot: FC = () => {
                     className="pic"
                     src={item.cover}
                     alt=""
+                    onClick={() => toOtherPage(item)}
                   />
                   <Card.Meta
                     title="Europe Street beat"
-                    description={`评分：${item.rate}`}
+                    description={item.rate ? `评分：${item.rate}` : "暂无评分"}
                     className="rate"
                   />
                 </div>

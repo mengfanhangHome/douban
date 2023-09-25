@@ -2,6 +2,7 @@ import {
   UPDATA_HOST_LIST,
   UPDATA_DETAIL_URL,
   UPDATA_SELECT_FORM,
+  ADDDATA_HOST_LIST,
 } from "./homeAction";
 
 import { ISelectForm } from "@/pages/home/interface";

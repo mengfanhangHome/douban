@@ -1,4 +1,5 @@
 import axios from "axios";
+import { message } from "antd";
 
 interface _IOptions<T> {
   url: string;
@@ -6,7 +7,11 @@ interface _IOptions<T> {
 }
 // TODO: 解析get请求参数
 
-axios.interceptors.response.use((res) => {
+const instance = axios.create({
+  baseURL: "http://localhost:1000/api",
+});
+
+instance.interceptors.response.use((res) => {
   if (res.status === 200) {
     return res.data;
   }
@@ -22,18 +27,26 @@ const _joinQuery = <T>(query: T): string => {
 //  TODO: get请求
 //  TODO: T 是query的类型（好像不用传递，对外部调用没有什么类型推断作用），U是返回值类型
 export function getHttp<T, U>(options: _IOptions<T>): Promise<U> {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const queryString = (options.query && _joinQuery<T>(options.query)) || "";
-    axios.get(`${options.url}${queryString}`).then((res) => {
+    instance.get(`${options.url}${queryString}`).then((res) => {
       if (res.status === 200) {
         resolve(res.data);
       } else {
-        reject({
-          error: 1,
-        });
+        message.error(res.message);
       }
     });
   });
 }
 // post请求
-export const postHttp = axios.post;
+export function postHttp<T, U>(options: _IOptions<T>): Promise<U> {
+  return new Promise((resolve) => {
+    instance.post(options.url, options.query).then((res) => {
+      if (res.status === 200) {
+        resolve(res.data);
+      } else {
+        message.error(res.message);
+      }
+    });
+  });
+}
