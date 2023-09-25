@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Card, Col, Image, Empty } from "antd";
 import { useSelector } from "@/redux/hooks";
 import { IHotItem } from "../reduce/homeReducer";
+import { deleteHotCreater } from "../reduce/homeAction";
+import { useDispatch } from "react-redux";
 import "./hot.scss";
 
 export const Hot: FC = () => {
@@ -11,6 +13,7 @@ export const Hot: FC = () => {
       hotList: state.homeReducer.hotList,
     };
   });
+  const dispatch = useDispatch();
   //  样式
   const styleContentPublic = {
     display: "flex",
@@ -23,7 +26,8 @@ export const Hot: FC = () => {
   };
   // TOD： 删除操作
   const delMovieHandler = (item: IHotItem) => {
-    
+    const action = deleteHotCreater([item.id]);
+    dispatch(action);
   };
   return (
     <div className="t50-outer">

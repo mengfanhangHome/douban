@@ -12,8 +12,11 @@ const instance = axios.create({
 });
 
 instance.interceptors.response.use((res) => {
+  console.log(res, "resss");
   if (res.status === 200) {
     return res.data;
+  } else {
+    message.error(res.message);
   }
 });
 

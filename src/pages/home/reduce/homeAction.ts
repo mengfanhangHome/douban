@@ -26,7 +26,7 @@ export const updataSelectForm = (selectPart: ISelectForm) => {
 //  删除list (接受一个id数组)
 export const deleteHotCreater =
   (ids: string[]): ThunkAction<void, RooteState, unknown, any> =>
-  async () => {
+  async (dispatch) => {
     try {
       await postHttp({
         url: "/movie/del",
@@ -34,10 +34,8 @@ export const deleteHotCreater =
       });
       message.success("删除成功");
       // TOD 重新获取列表
-      getHotCreater("t50", {
-        title: "",
-        rate: 0,
-      });
+      const reloadAction = getHotCreater("t50");
+      dispatch(reloadAction);
     } catch (error) {
       message.error("删除失败");
     }
@@ -45,7 +43,7 @@ export const deleteHotCreater =
 //  新增hostList
 export const addHotCreater =
   (addData: IAddMovieItem): ThunkAction<void, RooteState, unknown, any> =>
-  async () => {
+  async (action) => {
     try {
       await postHttp({
         url: `/movie/addHost`,
@@ -53,20 +51,23 @@ export const addHotCreater =
       });
       message.success("新增成功");
       // TOD 重新获取列表
-      getHotCreater("t50", {
-        title: "",
-        rate: 0,
-      });
+      const reloadAction = getHotCreater("t50");
+      action(reloadAction);
     } catch (error) {
       message.error(error);
     }
   };
 
+// 查询列表默认值
+const defaultSelectData: ISelectForm = {
+  title: "",
+  rate: 0,
+};
 //  请求hostlist
 export const getHotCreater =
   (
     type: movieType,
-    selectData: ISelectForm
+    selectData = defaultSelectData
   ): ThunkAction<void, RooteState, unknown, any> =>
   async (dispatch) => {
     const res = await getHttp<ISelectForm, IMoveResult>({
