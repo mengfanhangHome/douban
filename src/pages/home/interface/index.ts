@@ -27,3 +27,9 @@ export interface IAddMovieItem {
   url: string;
   cover: string;
 }
+
+//  更新rate
+export interface IRateParams {
+  rate: string;
+  id: string;
+}

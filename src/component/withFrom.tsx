@@ -23,6 +23,9 @@ const withFrom = (Com, sunset = 17) => {
           Modal: {
             titleColor: useLabelColor(sunset),
           },
+          Form: {
+            labelColor: useLabelColor(sunset),
+          },
         },
         token: {
           colorBgContainer: useBackgroundColor(sunset),

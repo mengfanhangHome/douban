@@ -7,6 +7,7 @@ import {
   ISelectForm,
   IMoveResult,
   IAddMovieItem,
+  IRateParams,
 } from "@/pages/home/interface";
 
 export const GET_HOT = "getHost"; //  获取hot列表
@@ -15,6 +16,24 @@ export const UPDATA_HOST_LIST = "upDataHostList"; //  更新hostList
 export const UPDATA_DETAIL_URL = "upDataDetailUrl"; //  更新详情页的http爬虫目标地址
 export const UPDATA_SELECT_FORM = "upDataSelectForm"; // 更新搜索条件数据
 export const DELETE_HOST_LIST = "deleteHostList"; // 删除
+export const UPDATE_HOST_RATE = "updateHostRate"; // 更新评分
+
+//  更新评分
+export const updateHostRateHandler =
+  (rateParams: IRateParams): ThunkAction<void, RooteState, unknown, any> =>
+  async (dispatch) => {
+    try {
+      await postHttp({
+        url: "/movie/update/rate",
+        query: rateParams,
+      });
+      message.success("更新成功");
+      const reloadAction = getHotCreater("t50");
+      dispatch(reloadAction);
+    } catch (error) {
+      message.error("更新失败");
+    }
+  };
 
 //  更新selectForm
 export const updataSelectForm = (selectPart: ISelectForm) => {
@@ -43,7 +62,7 @@ export const deleteHotCreater =
 //  新增hostList
 export const addHotCreater =
   (addData: IAddMovieItem): ThunkAction<void, RooteState, unknown, any> =>
-  async (action) => {
+  async (dispatch) => {
     try {
       await postHttp({
         url: `/movie/addHost`,
@@ -52,7 +71,7 @@ export const addHotCreater =
       message.success("新增成功");
       // TOD 重新获取列表
       const reloadAction = getHotCreater("t50");
-      action(reloadAction);
+      dispatch(reloadAction);
     } catch (error) {
       message.error(error);
     }

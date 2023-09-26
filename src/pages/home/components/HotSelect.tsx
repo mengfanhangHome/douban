@@ -11,7 +11,7 @@ interface ISelectForm {
   title: string;
   rate: number;
 }
-
+//  select组件
 export const HotSelect: FC = () => {
   const [selectDate, selectDatahandler] = useState<ISelectForm>({
     title: "",
