@@ -3,7 +3,6 @@ import { RooteState } from "@/redux/store";
 import { message } from "antd";
 import { getHttp, postHttp } from "@/api/http";
 import {
-  movieType,
   ISelectForm,
   IMoveResult,
   IAddMovieItem,
@@ -28,7 +27,7 @@ export const updateHostRateHandler =
         query: rateParams,
       });
       message.success("更新成功");
-      const reloadAction = getHotCreater("t50");
+      const reloadAction = getHotCreater();
       dispatch(reloadAction);
     } catch (error) {
       message.error("更新失败");
@@ -53,7 +52,7 @@ export const deleteHotCreater =
       });
       message.success("删除成功");
       // TOD 重新获取列表
-      const reloadAction = getHotCreater("t50");
+      const reloadAction = getHotCreater();
       dispatch(reloadAction);
     } catch (error) {
       message.error("删除失败");
@@ -70,7 +69,7 @@ export const addHotCreater =
       });
       message.success("新增成功");
       // TOD 重新获取列表
-      const reloadAction = getHotCreater("t50");
+      const reloadAction = getHotCreater();
       dispatch(reloadAction);
     } catch (error) {
       message.error(error);
@@ -85,12 +84,11 @@ const defaultSelectData: ISelectForm = {
 //  请求hostlist
 export const getHotCreater =
   (
-    type: movieType,
     selectData = defaultSelectData
   ): ThunkAction<void, RooteState, unknown, any> =>
   async (dispatch) => {
     const res = await getHttp<ISelectForm, IMoveResult>({
-      url: `/movie/${type}`,
+      url: `/movie/list`,
       query: selectData,
     });
     if (res) {

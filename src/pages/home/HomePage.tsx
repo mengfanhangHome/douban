@@ -2,9 +2,11 @@ import { FC, SyntheticEvent, useState } from "react";
 import { Modal } from "antd";
 import { Hot } from "./components/Hot";
 import { HotSelect } from "./components/HotSelect";
+import { useTranslation } from "react-i18next";
 
 export const HomePage: FC = () => {
   const [tipFlag, tipFlagHandler] = useState(true);
+  const { t } = useTranslation();
   return (
     <>
       {/* 搜索 */}
@@ -18,9 +20,9 @@ export const HomePage: FC = () => {
         footer={null}
       >
         <div onClick={(e: SyntheticEvent) => e.stopPropagation()}>
-          <p>1: 点击他妈电影名字可以删除</p>
-          <p>2: 点击电影评分可以编辑评分</p>
-          <p>3: 点击图片可以跳转到详情页</p>
+          <p>{t("hotT50.headerTips.delete")}</p>
+          <p>{t("hotT50.headerTips.rate")}</p>
+          <p>{t("hotT50.headerTips.detail")}</p>
         </div>
       </Modal>
     </>

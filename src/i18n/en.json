@@ -9,5 +9,30 @@
     "drawEnglishTitle": "English",
     "loginButton": "login",
     "phonePwd": "phonePwd"
+  },
+  "hotT50": {
+    "searchFrom": {
+      "name": "filmName",
+      "rate": "filmRate",
+      "searchButton": "Search",
+      "addButton": "Add"
+    },
+    "headerTips": {
+      "delete": "click the fuking filmName delete it",
+      "rate": "click the rate to edit it",
+      "detail": "click the pic jump to other pages"
+    },
+    "rateGroup": {
+      "modalTitle": "rate Edit",
+      "formLabel": "rate",
+      "noRate": "not have Rate"
+    },
+    "deleteModal": {
+      "title": "Delete",
+      "contentText": "do you want to delete"
+    }
+  },
+  "public": {
+    "submitButton": "submit"
   }
 }

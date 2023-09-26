@@ -1,5 +1,5 @@
 import { FC, SyntheticEvent, useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import { FormInstance, Form, Button } from "antd";
 
 interface ISbumitButtonProps {
@@ -17,6 +17,7 @@ export const SubmitButton: FC<ISbumitButtonProps> = ({
   const [canSubmit, canSubmitHandler] = useState(false);
   //  获取form的值（动态）
   const values = Form.useWatch([], formRef);
+  const { t } = useTranslation();
 
   const sendSubmit = (e: SyntheticEvent) => {
     e.stopPropagation();
@@ -37,7 +38,7 @@ export const SubmitButton: FC<ISbumitButtonProps> = ({
 
   return (
     <Button disabled={!canSubmit} onClick={(e) => sendSubmit(e)}>
-      提交
+      {t("public.submitButton")}
     </Button>
   );
 };

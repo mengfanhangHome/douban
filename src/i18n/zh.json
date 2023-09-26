@@ -9,5 +9,30 @@
     "drawEnglishTitle": "英文",
     "loginButton": "登录",
     "phonePwd": "验证码"
+  },
+  "hotT50": {
+    "searchFrom": {
+      "name": "电影名称",
+      "rate": "电影评分",
+      "searchButton": "查找",
+      "addButton": "新增"
+    },
+    "headerTips": {
+      "delete": "点击他妈电影名可以删除",
+      "rate": "点击电影评分可以编辑评分",
+      "detail": "击图片可以跳转到详情页"
+    },
+    "rateGroup": {
+      "modalTitle": "评分编辑",
+      "formLabel": "评分",
+      "noRate": "暂无评分"
+    },
+    "deleteModal": {
+      "title": "删除",
+      "contentText": "确认删除"
+    }
+  },
+  "public": {
+    "submitButton": "确认"
   }
 }

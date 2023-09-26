@@ -1,16 +1,21 @@
-import { FC, SyntheticEvent, useState } from "react";
+import { FC, SyntheticEvent, useState, memo } from "react";
 import { Card, Col, Image, Empty, Modal, Tooltip } from "antd";
 import { useSelector } from "@/redux/hooks";
 import { IHotItem } from "../reduce/homeReducer";
 import { deleteHotCreater } from "../reduce/homeAction";
 import { useDispatch } from "react-redux";
 import { RateNode } from "./Rate";
+import { useTranslation } from "react-i18next";
 import "./hot.scss";
 //  样式
 const styleContentPublic = {
   display: "flex",
   justifyContent: "center",
   alignContent: "center",
+};
+
+const MovieTitle: FC<{ item: IHotItem }> = ({ item }) => {
+  return <h3>{item.title}</h3>;
 };
 
 export const Hot: FC = () => {
@@ -21,6 +26,7 @@ export const Hot: FC = () => {
     };
   });
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [delFlag, delFlagHandler] = useState(false);
   const [curItem, curItemHandler] = useState<IHotItem>();
   // TOD： 删除操作
@@ -52,18 +58,14 @@ export const Hot: FC = () => {
         {(hotList.length &&
           hotList.map((item) => {
             return (
-              <Col
-                key={item.id}
-                span={5}
-                className="col-item"
-                onClick={() => delSingHandler(item)}
-              >
+              <Col key={item.id} span={5} className="col-item">
                 <Card
                   className="card-item"
-                  title={item.title}
+                  title={<MovieTitle item={item}></MovieTitle>}
                   bodyStyle={styleContentPublic}
                   hoverable={true}
                   key={item.id}
+                  onClick={() => delSingHandler(item)}
                 >
                   <div>
                     <Tooltip title="点击跳转详情">
@@ -76,7 +78,6 @@ export const Hot: FC = () => {
                       />
                     </Tooltip>
                     <Card.Meta
-                      title="Europe Street beat"
                       description={<RateNode item={item} />}
                       className="rate"
                     />
@@ -88,12 +89,13 @@ export const Hot: FC = () => {
       </div>
       {/* 删除弹窗 */}
       <Modal
-        title="删除操作"
+        title={t("hotT50.deleteModal.title")}
         open={delFlag}
         onOk={delMovieHandler}
         onCancel={delCancel}
       >
-        {`确认删除${(curItem && curItem.title) || ""}吗？`}
+        {(t("hotT50.deleteModal.contentText") + (curItem && curItem.title) ||
+          "") + "?"}
       </Modal>
     </>
   );

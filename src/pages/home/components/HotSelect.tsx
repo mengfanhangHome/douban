@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button, Form, Input, InputNumber } from "antd";
 import { getHotCreater } from "../reduce/homeAction";
 import { IMovieType } from "@/pages/home/interface";
@@ -18,6 +19,8 @@ export const HotSelect: FC = () => {
     rate: 0,
   });
   const [modalFlag, modalFlagHandler] = useState(false);
+
+  const { t } = useTranslation();
 
   //  开/关弹窗事件
   const toggleModalFlagHandler = (bool: boolean) => {
@@ -62,7 +65,7 @@ export const HotSelect: FC = () => {
   };
   //  获取电影列表函数
   const getHot = async () => {
-    const action = getHotCreater(type, selectDate);
+    const action = getHotCreater(selectDate);
     dispatch(action);
   };
   //  新增电影列表函数
@@ -72,23 +75,25 @@ export const HotSelect: FC = () => {
   return (
     <>
       <Form className="form-layout" layout="inline">
-        <Form.Item label="电影名称" {...formItemLayout}>
+        <Form.Item label={t("hotT50.searchFrom.name")} {...formItemLayout}>
           <Input
             onChange={(e) => setFormData(e, "title")}
             onPressEnter={getHot}
           />
         </Form.Item>
-        <Form.Item label="电影评分" {...formItemLayout}>
+        <Form.Item label={t("hotT50.searchFrom.rate")} {...formItemLayout}>
           <InputNumber
             onChange={(e) => setFormData(e, "rate")}
             onPressEnter={getHot}
           />
         </Form.Item>
         <Form.Item>
-          <Button onClick={getHot}>查找</Button>
+          <Button onClick={getHot}>
+            {t("hotT50.searchFrom.searchButton")}
+          </Button>
         </Form.Item>
         <Form.Item>
-          <Button onClick={addHot}>新增</Button>
+          <Button onClick={addHot}>{t("hotT50.searchFrom.addButton")}</Button>
         </Form.Item>
       </Form>
       <HotAdd
