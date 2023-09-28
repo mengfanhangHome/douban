@@ -16,16 +16,14 @@ function _isNight(pointTime: number): boolean {
 }
 
 //  设置label颜色
-export function useLabelColor(pointTime: number): string {
-  return (_isNight(pointTime) && colors.WHITE) || colors.DRAKNESS;
+export function useLabelColor(point: number | boolean): string {
+  return (point && colors.WHITE) || colors.DRAKNESS;
 }
 //  设置背景颜色
-export function useBackgroundColor(pointTime: number): string {
-  return (_isNight(pointTime) && colors.DRAKNESS) || colors.WHITE;
+export function useBackgroundColor(point: number | boolean): string {
+  return (point && colors.DRAKNESS) || colors.WHITE;
 }
 //  设置禁用状态下的字体颜色
-export function useDisableColor(pointTime: number): string {
-  return (
-    (_isNight(pointTime) && colors.DISABLEDNGITHTEXT) || colors.DISABLEDNOONTEXT
-  );
+export function useDisableColor(point: number | boolean): string {
+  return (point && colors.DISABLEDNGITHTEXT) || colors.DISABLEDNOONTEXT;
 }

@@ -1,18 +1,24 @@
-import { FC, useState, SyntheticEvent, useEffect } from "react";
+import { FC, useState, SyntheticEvent } from "react";
 import { Tooltip, Modal, Form, InputNumber } from "antd";
 import { useDispatch } from "react-redux";
-import { IHotItem } from "../reduce/homeReducer";
+import { IMovieListItem } from "../interface";
 import { updateHostRateHandler } from "../reduce/homeAction";
 import { SubmitButton } from "./CtrlButton";
 import { useLabelColor } from "@/pages/hooks/useChangeColor";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "@/redux/hooks";
 //  评分
-export const RateNode: FC<{ item: IHotItem }> = (props) => {
+export const RateNode: FC<{ item: IMovieListItem }> = (props) => {
   const { rate } = props.item;
   const [editFlag, editFlagHandler] = useState(false);
   const [formRef] = Form.useForm();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { isDark } = useSelector((state) => {
+    return {
+      isDark: state.globalReducer.isDark,
+    };
+  });
   // TODO: 关闭编辑
   const editCancel = (e?: SyntheticEvent) => {
     e && e.stopPropagation();
@@ -43,11 +49,13 @@ export const RateNode: FC<{ item: IHotItem }> = (props) => {
       submitHandler={submitHandler}
     ></SubmitButton>,
   ];
-  console.log("rerender", rate);
   return (
     <>
       <Tooltip title="点击编辑评分">
-        <h3 style={{ color: useLabelColor(17) }} onClick={(e) => editRate(e)}>
+        <h3
+          style={{ color: useLabelColor(isDark) }}
+          onClick={(e) => editRate(e)}
+        >
           {rate
             ? t("hotT50.rateGroup.formLabel") + `:${rate}`
             : t("hotT50.rateGroup.noRate")}

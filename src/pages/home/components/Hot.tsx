@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useState, memo } from "react";
 import { Card, Col, Image, Empty, Modal, Tooltip } from "antd";
 import { useSelector } from "@/redux/hooks";
-import { IHotItem } from "../reduce/homeReducer";
+import { IMovieListItem } from "../interface";
 import { deleteHotCreater } from "../reduce/homeAction";
 import { useDispatch } from "react-redux";
 import { RateNode } from "./Rate";
@@ -14,7 +14,7 @@ const styleContentPublic = {
   alignContent: "center",
 };
 
-const MovieTitle: FC<{ item: IHotItem }> = ({ item }) => {
+const MovieTitle: FC<{ item: IMovieListItem }> = ({ item }) => {
   return <h3>{item.title}</h3>;
 };
 
@@ -28,7 +28,7 @@ export const Hot: FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [delFlag, delFlagHandler] = useState(false);
-  const [curItem, curItemHandler] = useState<IHotItem>();
+  const [curItem, curItemHandler] = useState<IMovieListItem>();
   // TOD： 删除操作
   const delMovieHandler = () => {
     if (curItem) {
@@ -39,7 +39,7 @@ export const Hot: FC = () => {
     }
   };
   //  打开弹窗，并赋值ids
-  const delSingHandler = (item: IHotItem) => {
+  const delSingHandler = (item: IMovieListItem) => {
     delFlagHandler(true);
     curItemHandler(item);
   };
@@ -48,7 +48,7 @@ export const Hot: FC = () => {
     delFlagHandler(false);
   };
   // TOD：跳转详情页
-  const toOtherPage = (record: IHotItem, e: SyntheticEvent) => {
+  const toOtherPage = (record: IMovieListItem, e: SyntheticEvent) => {
     e.stopPropagation();
     window.open(record.url, "_blank");
   };

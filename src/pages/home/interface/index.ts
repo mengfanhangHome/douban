@@ -9,16 +9,16 @@ export interface ISelectForm {
   rate: number;
 }
 
-export interface IMovieList {
+export interface IMovieListItem {
   title: string;
-  rate: number;
+  rate: string;
   url: string;
   cover: string;
-  id: number;
+  id: string;
 }
 
 export interface IMoveResult {
-  subject: IMovieList[];
+  subject: IMovieListItem[];
 }
 
 //  新增电影值

@@ -1,4 +1,4 @@
-import withFrom from "@/component/withFrom"; // 设置antd公共样式的高阶函数
+import useWithFrom from "@/component/useWithFrom"; // 设置antd公共样式的高阶函数
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { LoginPage, HomePage, ShopPage, TableMovie } from "@/pages";
 import Test from "@/pages/test";
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default withFrom(App);
+export default useWithFrom(App);

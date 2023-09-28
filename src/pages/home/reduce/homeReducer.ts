@@ -4,22 +4,10 @@ import {
   UPDATA_SELECT_FORM,
 } from "./homeAction";
 
-import { ISelectForm } from "@/pages/home/interface";
-export interface IHotItem {
-  episodes_info: string;
-  rate: string;
-  cover_x: number;
-  title: string;
-  url: string;
-  playable: boolean;
-  cover: string;
-  id: string;
-  cover_y: number;
-  is_new: Boolean;
-}
+import { ISelectForm, IMovieListItem } from "@/pages/home/interface";
 
 export interface IHomeState {
-  hotList: IHotItem[];
+  hotList: IMovieListItem[];
   detailUrl: string;
   selectData: ISelectForm;
 }

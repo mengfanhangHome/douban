@@ -7,11 +7,13 @@ import thunk from "redux-thunk";
 import langReducer from "./lang/langReducer";
 import homeReducer from "@/pages/home/reduce/homeReducer";
 import shopReducer from "@/pages/shop/reduce/shopReducer";
+import globalReducer from "./global/globalReduces";
 
 const rootReducer = combineReducers({
   langReducer,
   homeReducer,
   shopReducer,
+  globalReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
