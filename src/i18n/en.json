@@ -8,7 +8,9 @@
     "drawChineseTitle": "Chinese",
     "drawEnglishTitle": "English",
     "loginButton": "login",
-    "phonePwd": "phonePwd"
+    "phonePwd": "phonePwd",
+    "register": "register",
+    "handler": "handler"
   },
   "hotT50": {
     "searchFrom": {

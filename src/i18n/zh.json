@@ -8,7 +8,9 @@
     "drawChineseTitle": "中文",
     "drawEnglishTitle": "英文",
     "loginButton": "登录",
-    "phonePwd": "验证码"
+    "phonePwd": "验证码",
+    "register": "注册",
+    "handler": "操作"
   },
   "hotT50": {
     "searchFrom": {

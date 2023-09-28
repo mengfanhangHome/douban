@@ -8,12 +8,10 @@ const darkModeQuery =
   window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
 
 export const useDark = () => {
-  // const [isDark, isDarkHandler] = useState(darkModeQuery.matches);
   const dispatch = useDispatch();
   useEffect(() => {
     darkModeQuery.addListener(watchFn);
     return () => {
-      console.log("unMounte");
       darkModeQuery.removeListener(watchFn);
     };
   }, []);
