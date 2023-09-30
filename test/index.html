@@ -8,22 +8,47 @@
 </head>
 
 <body>
-  <script module>
-    const a = {
-      name: '123',
-      b: {
-        name: 'fff',
-        fn: function () {
-          console.log(this.name)
-          console.log(this)
-        }
-      }
-    }
-    const z = {};
-    z.l = a
-    z.l.fn = a.b.fn
 
-    z.l.fn()
+  <div id="root"></div>
+
+  <script module>
+    const configTree = {  //  配置对象
+      tag: 'div',
+      attrs: {
+        class: 'father',
+      },
+      children: [
+        { tag: 'p', content: '1' },
+        { tag: 'p', content: '2' },
+        { tag: 'p', content: '3' },
+        { tag: 'p', content: '4' },
+      ]
+    }
+
+    const parseTree = (tree) => { //  解析函数
+      const tag = tree.tag || ''
+      const attrs = tree.attrs || {}
+      const vNode = document.createElement(tag)
+      const content = tree.content
+      const childrens = tree.children || []
+      const attrKyes = Object.keys(attrs)
+      attrKyes.forEach((key) => {
+        vNode.setAttribute(key, attrs[key])
+      })
+      if (content) {
+        vNode.innerHTML = content
+      } else {
+        childrens.forEach(item => {
+          vNode.appendChild(parseTree(item))
+        })
+      }
+
+      return vNode
+    }
+
+    const res = parseTree(configTree)
+
+    document.querySelector('#root').appendChild(res)  //  挂载
   </script>
 </body>
 

@@ -1,4 +1,4 @@
-import { LoginTypes } from "./types";
+import { LoginTypes } from "./loginActions";
 
 export interface IAction {
   type: LoginTypes;

@@ -1,5 +1,5 @@
-import { FC, useState, useEffect, SyntheticEvent } from "react";
-import { Modal, Form, Input, FormInstance, Button } from "antd";
+import { FC, SyntheticEvent } from "react";
+import { Modal, Form, Input } from "antd";
 import { IAddMovieItem } from "../interface";
 import { useDispatch } from "react-redux";
 import { addHotCreater } from "../reduce/homeAction";

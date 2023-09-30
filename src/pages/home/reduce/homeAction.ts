@@ -94,7 +94,7 @@ export const getHotCreater =
     if (res) {
       const action = {
         type: UPDATA_HOST_LIST,
-        payload: res,
+        payload: res.data,
       };
       dispatch(action);
     }
