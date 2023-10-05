@@ -2,6 +2,7 @@ import { ThunkAction } from "redux-thunk";
 import { RooteState } from "@/redux/store";
 import { ILoginData } from "./interface";
 import { postHttp } from "@/api/http";
+import { history } from "@/router/history";
 import { message } from "antd";
 
 export enum LoginTypes {
@@ -24,7 +25,7 @@ export const loginHandlerCreater = (
       query: loginData,
     });
     message.success(result.message);
-    
+    history.push("/home/t50");
   };
 };
 //  注册
@@ -36,6 +37,6 @@ export const registerActionCreater = (
       url: "/user/register",
       query: registerData,
     });
-    console.log(result);
+    history.push("/home/t50");
   };
 };

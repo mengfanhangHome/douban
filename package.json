@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.9.0",
     "i18next": "^23.5.1",
+    "immutable": "^5.0.0-beta.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^13.2.2",

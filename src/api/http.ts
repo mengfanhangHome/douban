@@ -1,5 +1,4 @@
-import axios, { AxiosResponse } from "axios";
-import { Redirect } from "react-router-dom";
+import axios from "axios";
 import { message } from "antd";
 
 interface _IOptions<T> {
@@ -16,9 +15,8 @@ interface _Response<T> {
 const instance = axios.create({
   baseURL: "http://localhost:1000/api",
 });
-
+//  响应值解析
 instance.interceptors.response.use((res) => {
-  console.log(res, "res");
   if (res.status && res.data.status === 401) {
     message.error("未登录");
     // window.location.href = "http://localhost:1000/login";
@@ -53,7 +51,6 @@ export function getHttp<T, U>(options: _IOptions<T>): Promise<_Response<U>> {
 export function postHttp<T, U>(options: _IOptions<T>): Promise<_Response<U>> {
   return new Promise((resolve) => {
     instance.post<any, _Response<U>>(options.url, options.query).then((res) => {
-      console.log(res, "postttt");
       if (res.status === 200) {
         resolve(res);
       }
