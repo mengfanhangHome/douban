@@ -2,10 +2,12 @@ import { FC, useEffect } from "react";
 import { Form, Input, Col, Row, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { getUserListCreater } from "../reduce/actions";
+import { ISearchData } from "../interface";
+import { Button as But } from "@/viking/index.es.js";
 import "./user-select.scss";
-
+console.log(But, "mfh");
 export const UserSelect: FC = () => {
-  const [formRef] = Form.useForm();
+  const [formRef] = Form.useForm<ISearchData>();
   const dispatch = useDispatch();
   const formData = Form.useWatch([], formRef);
 
@@ -14,6 +16,7 @@ export const UserSelect: FC = () => {
   }, []);
 
   const searchHandler = () => {
+    console.log(typeof formData, "mfh");
     const action = getUserListCreater(formData);
     dispatch(action);
   };
@@ -24,7 +27,7 @@ export const UserSelect: FC = () => {
         <Row>
           <Col span={6}>
             <Form.Item name="userId" label="用户名">
-              <Input value={123} allowClear onPressEnter={searchHandler} />
+              <Input allowClear onPressEnter={searchHandler} />
             </Form.Item>
           </Col>
           <Col span={6} offset={2}>
