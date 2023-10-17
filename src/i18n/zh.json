@@ -1,4 +1,14 @@
 {
+  "tips": {
+    "updateSuc": "更新成功",
+    "updateErr": "更新失败",
+    "addSuc": "添加成功",
+    "addErr": "添加失败",
+    "getSuc": "获取成功",
+    "getErr": "获取失败",
+    "deleteSuc": "删除成功",
+    "deleteErr": "删除失败"
+  },
   "login": {
     "user": "用户名",
     "pwd": "密码",

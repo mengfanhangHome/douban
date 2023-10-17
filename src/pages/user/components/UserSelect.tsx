@@ -3,9 +3,7 @@ import { Form, Input, Col, Row, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { getUserListCreater } from "../reduce/actions";
 import { ISearchData } from "../interface";
-import { Button as But } from "@/viking/index.es.js";
 import "./user-select.scss";
-console.log(But, "mfh");
 export const UserSelect: FC = () => {
   const [formRef] = Form.useForm<ISearchData>();
   const dispatch = useDispatch();

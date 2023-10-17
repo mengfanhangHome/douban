@@ -1,4 +1,14 @@
 {
+  "tips": {
+    "updateSuc": "update successfully",
+    "updateErr": "update failed",
+    "addSuc": "add successfully",
+    "addErr": "add failed",
+    "getSuc": "get successfully",
+    "getErr": "get failed",
+    "deleteSuc": "delete successfully",
+    "deleteErr": "delete failed"
+  },
   "login": {
     "user": "username",
     "pwd": "password",

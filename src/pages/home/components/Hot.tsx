@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useState, memo } from "react";
+import { FC, SyntheticEvent, useState } from "react";
 import { Card, Col, Image, Empty, Modal, Tooltip } from "antd";
 import { useSelector } from "@/redux/hooks";
 import { IMovieListItem } from "../interface";
